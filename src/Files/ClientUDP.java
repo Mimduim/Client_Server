@@ -13,7 +13,7 @@ public class ClientUDP {
 		InetAddress IPAddress = InetAddress.getByName("localhost");
 
 		String pergunta = "";
-		System.out.println(" Mandar uma resposta ?");
+		System.out.println(" Enviar resposta: \nsim ou não?");
 		pergunta = Per.readLine();
 
 		System.out.println("Digite a pergunta:\n");

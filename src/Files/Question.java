@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Question {
 	
-	private static int NumQuest;
-	private static int NumAlter;
-	private static String[] Resposta;
+	private  int NumQuest;
+	private  int NumAlter;
+	private  String[] Resposta;
 
 	
 	public Question (int NQ, int NA, String[] R){
@@ -14,6 +14,34 @@ public class Question {
 		this.NumAlter = NA;
 		this.Resposta = R;		
 	}
-	
-	
+
+
+	public  int getNumQuest() {
+		return NumQuest;
+	}
+
+
+	public  void setNumQuest(int numQuest) {
+		NumQuest = numQuest;
+	}
+
+
+	public  int getNumAlter() {
+		return NumAlter;
+	}
+
+
+	public  void setNumAlter(int numAlter) {
+		NumAlter = numAlter;
+	}
+
+
+	public  String[] getResposta() {
+		return Resposta;
+	}
+
+
+	public  void setResposta(String[] resposta) {
+		Resposta = resposta;
+	}
 }

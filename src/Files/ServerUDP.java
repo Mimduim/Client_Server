@@ -8,6 +8,7 @@ public class ServerUDP {
 	public void Start() throws IOException {
 
 		DatagramSocket serverSocket = new DatagramSocket(9876);
+		ServerDataUDP dataUDP;
 
 		while (true) {
 
@@ -23,6 +24,10 @@ public class ServerUDP {
 			int port = receivePacket.getPort();
 
 			InetAddress IPAddress = receivePacket.getAddress();
+			
+			
+			dataUDP = new ServerDataUDP(sendData);
+			
 			String capitalizedSentence = sentence.toUpperCase();
 
 			sendData = capitalizedSentence.getBytes();
