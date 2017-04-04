@@ -4,36 +4,39 @@ import java.util.*;
 
 public class Verifica {
 
-	List<Question> question;
-	Estatistica estatistica;
+	
+	List<Integer> list;
 
-	public void Search(String[] str) {
-		int acertos = 0, erros = 0, index = 0;
-		int[][] temp = new int[10][3];
+	public Verifica(){
+	
+	}
+	
+	public List<Integer> Search(Question question) {
+		
+		DataBase database = new DataBase();
+		database.inicialize();
+		list = new ArrayList<Integer>();
+		int acertos = 0, erros = 0;
+		
 
-		for (Iterator<Question> iterator = question.iterator(); iterator.hasNext();) {
+		for (Iterator<Question> iterator = database.getDataQuestion().iterator(); iterator.hasNext();) {
 
 			Question auxquestion = (Question) iterator.next();
 			
-			if (auxquestion.getNumQuest() == Integer.parseInt(str[0])) {
-				if (auxquestion.getNumAlter() == Integer.parseInt(str[1])) {
-					for (int i = 2; i < auxquestion.getResposta().length; i++) {
-						if (str[i] == auxquestion.getResposta()[i])
+			if (auxquestion.getNumQuest() == question.getNumQuest()) {
+				if (auxquestion.getNumAlter() == question.getNumAlter()) {
+					for (int i = 0; i < auxquestion.getResposta().length(); i++) {
+						if (question.getResposta().charAt(i) == auxquestion.getResposta().charAt(i))
 							acertos += 1;
 						else
 							erros += 1;
 					}
 				}
-			}
-
-			
-				temp[index][0] = auxquestion.getNumQuest();
-				temp[index][1] = acertos;
-				temp[index][2] = erros;
-				index ++;
-
+			}		
 		}
-		estatistica.setGabarito(temp);
-	}
-
+		list.add(question.getNumQuest());
+		list.add(acertos);
+		list.add(erros);
+		return list;
+	}	
 }

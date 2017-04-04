@@ -1,37 +1,37 @@
 package Files;
 
+import java.util.*;
+
 public class Estatistica {
 
-	StringBuffer resp;
-	int[][] Gabarito = new int[10][3];
+	List<Integer> resp = new ArrayList<Integer>();
+	List<String> str = new ArrayList<String>();
+	String strbff = "";
+	List<Integer> Gabarito = new ArrayList<Integer>();
 
-	public StringBuffer getResp() {
-		return resp;
+	public String getResp() {
+
+		strbff = (("Questão: " + resp.get(0).toString() + " , acertos = " + resp.get(1).toString() + " , erros = "
+				+ resp.get(2).toString() + " \n"));
+
+		resp.clear();
+		Gabarito.clear();
+		return strbff;
 	}
 
-	public void setResp(int[][] gabarito) {
+	public void setResp(List<Integer> gabarito) {
 
-		for (int i = 0; i < Gabarito.length; i++) {
-			for (int j = 0; j < Gabarito.length; j++) {
-				this.resp.append("Questão " + Gabarito[i][j] + ':' + "acertos = " + Gabarito[i][j] + 'e' + "erros ="
-						+ Gabarito[i][j] + "\n");
-			}
-		}
+		resp = gabarito;
 
 	}
 
-	public int[][] getGabarito() {
+	public List<Integer> getGabarito() {
 		return Gabarito;
 	}
 
-	public void setGabarito(int[][] gabarito) {
+	public void setGabarito(List<Integer> gabarito) {
 		Gabarito = gabarito;
 		setResp(Gabarito);
-	}
-
-	public StringBuffer str() {
-
-		return resp;
 	}
 
 }

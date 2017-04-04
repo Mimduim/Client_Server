@@ -34,8 +34,8 @@ public class ClientUDP {
 			clientSocket.receive(receivePacket);
 
 			String modifiedSentence = new String(receivePacket.getData());
-			System.out.println("FROM SERVER: " + modifiedSentence);
-
+			System.out.print("FROM SERVER: " + modifiedSentence);
+	
 		}
 
 		// clientSocket.close();

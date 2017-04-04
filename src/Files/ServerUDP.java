@@ -4,11 +4,13 @@ import java.io.*;
 import java.net.*;
 
 public class ServerUDP {
-
+	
+	
+	
 	public void Start() throws IOException {
 
 		DatagramSocket serverSocket = new DatagramSocket(9876);
-		ServerDataUDP dataUDP;
+		String capitalizedSentence = "\n";
 
 		while (true) {
 
@@ -24,11 +26,12 @@ public class ServerUDP {
 			int port = receivePacket.getPort();
 
 			InetAddress IPAddress = receivePacket.getAddress();
+				
+			ProccesInfo proccesinfo = new ProccesInfo();
+			proccesinfo.Inicialize(sentence);
 			
-			
-			dataUDP = new ServerDataUDP(sendData);
-			
-			String capitalizedSentence = sentence.toUpperCase();
+		
+			capitalizedSentence += proccesinfo.response();
 
 			sendData = capitalizedSentence.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
@@ -36,6 +39,6 @@ public class ServerUDP {
 			serverSocket.send(sendPacket);
 
 		}
-
+		//serverSocket.close();
 	}
 }

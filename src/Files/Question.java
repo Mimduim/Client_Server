@@ -1,18 +1,22 @@
 package Files;
 
-import java.util.*;
-
 public class Question {
 	
 	private  int NumQuest;
 	private  int NumAlter;
-	private  String[] Resposta;
+	private  String Resposta;
 
+	public Question(){}
 	
-	public Question (int NQ, int NA, String[] R){
+	public Question (int NQ, int NA, String R){
 		this.NumQuest = NQ;
 		this.NumAlter = NA;
 		this.Resposta = R;		
+	}
+
+	public void print(){
+		
+		System.out.println(NumQuest + ";" + NumAlter + ";" + Resposta);
 	}
 
 
@@ -36,12 +40,12 @@ public class Question {
 	}
 
 
-	public  String[] getResposta() {
+	public  String getResposta() {
 		return Resposta;
 	}
 
 
-	public  void setResposta(String[] resposta) {
+	public  void setResposta(String resposta) {
 		Resposta = resposta;
 	}
 }
