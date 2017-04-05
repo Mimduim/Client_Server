@@ -1,11 +1,11 @@
-package Files;
+package UDP;
 
 import java.io.*;
 import java.net.*;
 
-public class ClientUDP {
+public class ClienteUDP {
 
-	public void Start() throws IOException {
+	public static void main(String args[]) throws IOException {
 
 		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 		BufferedReader Per = new BufferedReader(new InputStreamReader(System.in));
@@ -13,18 +13,23 @@ public class ClientUDP {
 		InetAddress IPAddress = InetAddress.getByName("localhost");
 
 		String pergunta = "";
+		String sentence = "";
 		System.out.println(" Enviar resposta: \nsim ou não?");
 		pergunta = Per.readLine();
 
 		System.out.println("Digite a pergunta:\n");
+		
 
 		while (pergunta != "sim" || pergunta != "Sim") {
-
+			
+			
+		
 			byte[] sendData = new byte[1024];
 			byte[] receiveData = new byte[1024];
 
-			String sentence = inFromUser.readLine();
-
+			sentence =  inFromUser.readLine();
+			
+			
 			sendData = sentence.getBytes();
 
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
@@ -35,9 +40,8 @@ public class ClientUDP {
 
 			String modifiedSentence = new String(receivePacket.getData());
 			System.out.print("FROM SERVER: " + modifiedSentence);
-			System.out.print("\n");
 	
-		}
+	}
 
 		// clientSocket.close();
 	}

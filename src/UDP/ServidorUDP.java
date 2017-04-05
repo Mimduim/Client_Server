@@ -1,19 +1,23 @@
-package Files;
+package UDP;
+
 
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
-public class ServerUDP {
+public class ServidorUDP {
 	
 	
 	
-	public void Start() throws IOException {
+	public static void main(String args[]) throws IOException {
 
 		DatagramSocket serverSocket = new DatagramSocket(9876);
-		String capitalizedSentence = "\n";
+		
 
 		while (true) {
 
+			
+			
 			byte[] receiveData = new byte[1024];
 			byte[] sendData = new byte[1024];
 
@@ -27,11 +31,9 @@ public class ServerUDP {
 
 			InetAddress IPAddress = receivePacket.getAddress();
 				
-			ProccesInfo proccesinfo = new ProccesInfo();
-			proccesinfo.Inicialize(sentence);
 			
-			
-			capitalizedSentence += proccesinfo.response();
+			String capitalizedSentence =  sentence.toUpperCase();
+
 
 			sendData = capitalizedSentence.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
