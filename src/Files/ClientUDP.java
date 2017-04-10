@@ -12,10 +12,7 @@ public class ClientUDP {
 		DatagramSocket clientSocket = new DatagramSocket();
 		InetAddress IPAddress = InetAddress.getByName("localhost");
 
-		String pergunta = "";
-		System.out.println(" Enviar resposta: \nsim ou não?");
-		pergunta = Per.readLine();
-
+		String pergunta = "sim";
 		System.out.println("Digite a pergunta:\n");
 
 		while (pergunta != "sim" || pergunta != "Sim") {

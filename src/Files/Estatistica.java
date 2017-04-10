@@ -5,7 +5,6 @@ import java.util.*;
 public class Estatistica {
 
 	List<Integer> resp = new ArrayList<Integer>();
-	List<String> str = new ArrayList<String>();
 	String strbff = "";
 	List<Integer> Gabarito = new ArrayList<Integer>();
 

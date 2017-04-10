@@ -3,17 +3,17 @@ package Files;
 import java.util.*;
 
 public class Verifica {
-
-	
+	DataBase database;
 	List<Integer> list;
 
-	public Verifica(){
-	
+	public Verifica() {
+
 	}
+
 	
+
 	public List<Integer> Search(Question question) {
-		
-		DataBase database = new DataBase();
+		database = new DataBase();
 		database.inicialize();
 		list = new ArrayList<Integer>();
 		int acertos = 0, erros = 0;
@@ -38,5 +38,5 @@ public class Verifica {
 		list.add(acertos);
 		list.add(erros);
 		return list;
-	}	
+	}
 }
