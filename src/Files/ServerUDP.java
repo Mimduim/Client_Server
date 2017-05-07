@@ -2,48 +2,38 @@ package Files;
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ServerUDP {
+	private static DatagramSocket serverSocket;
+	private static DatagramPacket receivePacket;
+	private static DatagramPacket sendPacket;
+	private static InetAddress IPAddress;
+	private static ProccesInfo proccesinfo;
+	private static String capitalizedSentence;
+	private static String sentence;
+	private static byte[] receiveData;
+	private static byte[] sendData;
+	private static int port;
 
-	static List<String> str = new ArrayList<String>();
-
-	public void Start() throws IOException {
-
-		DatagramSocket serverSocket = new DatagramSocket(9876);
-
+	public static void main(String[] args) throws IOException {
+		serverSocket = new DatagramSocket(9873);
 		while (true) {
-
-			byte[] receiveData = new byte[1024];
-			byte[] sendData = new byte[1024];
-
-			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
+			receiveData = new byte[1024];
+			sendData = new byte[1024];
+			capitalizedSentence = "";
+			receivePacket = new DatagramPacket(receiveData, receiveData.length);
 			serverSocket.receive(receivePacket);
-
-			String sentence = new String(receivePacket.getData());
-
-			int port = receivePacket.getPort();
-
-			InetAddress IPAddress = receivePacket.getAddress();
-
-			ProccesInfo proccesinfo = new ProccesInfo();
+			sentence = new String(receivePacket.getData());
+			port = receivePacket.getPort();
+			IPAddress = receivePacket.getAddress();
+			proccesinfo = new ProccesInfo();
 			proccesinfo.Inicialize(sentence);
-
-			String capitalizedSentence = "\n";
-
-			str.add(proccesinfo.response());
-			for (int i = 0; i < str.size(); i++) {
-				capitalizedSentence += str.get(i);
-			}
-
+			capitalizedSentence = proccesinfo.response();
 			sendData = capitalizedSentence.getBytes();
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
-
+			sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
 			serverSocket.send(sendPacket);
-
 		}
 		// serverSocket.close();
 	}
+
 }

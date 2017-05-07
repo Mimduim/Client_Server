@@ -14,12 +14,6 @@ public class Question {
 		this.Resposta = R;		
 	}
 
-	public void print(){
-		
-		System.out.println(NumQuest + ";" + NumAlter + ";" + Resposta);
-	}
-
-
 	public  int getNumQuest() {
 		return NumQuest;
 	}

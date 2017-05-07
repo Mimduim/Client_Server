@@ -4,20 +4,18 @@ import java.io.*;
 import java.util.*;
 
 public class DataBase {
-     List<Question> dataQuestion;
-	 Question question;
-	 List<String> Dados;
+	private static List<Question> dataQuestion;
+	private static Question question;
+	private static FileReader Fileopen;
+	private static BufferedReader BuffFileopen;
 
-	public DataBase() {
-	}
+	public DataBase() {	}
 
 	public List<Question> getDataQuestion() {
 		return dataQuestion;
 	}
 
 	public  void FileSTR(String diretorio, List<Question> dataQuestion) {
-		FileReader Fileopen;
-		BufferedReader BuffFileopen;
 		try {
 			Fileopen = new FileReader(diretorio);
 			BuffFileopen = new BufferedReader(Fileopen);
