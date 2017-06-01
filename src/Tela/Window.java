@@ -10,10 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -228,8 +231,21 @@ public class Window extends JFrame {
 		buttonSend.setBounds(261, 80, 114, 51);
 		contentPane.add(buttonSend);
 	}
+	
+	public void StartClientTCP() throws IOException{
+		BufferedReader InFromUser = new BufferedReader(new InputStreamReader(System.in;
+		Socket clientSocket = new Socket ("localhost", 6789);
+		DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+		sentence = inFromUser.readLine();
+		outToServer.writeBytes(sentence + '\n');
+		modifiedSentence = inFromServer.readLine();
+		System.out.println("FROM SERVER: " + modifiedSentence);;
+		clientSocket.close();
+		
+	}
 
-	public void StartClient() throws IOException {
+	public void StartClientUDP() throws IOException {
 		clientSocket = new DatagramSocket();
 		IPAddress = InetAddress.getByName(textFieldip.getText());
 		sendData = new byte[1024];
